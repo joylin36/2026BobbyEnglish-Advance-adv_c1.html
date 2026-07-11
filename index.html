@@ -2,7 +2,6 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <!-- 🎯 全載具核心天線：加入最標準的縮放網頁視窗雷達，確保行動裝置完美適應 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>巴比美語補習班 | 專屬學員報名系統</title>
     <style>
@@ -407,7 +406,7 @@
             .extra-summer-box { border: 1px solid #666; background-color: transparent; }
         }
 
-        /* 🎯 任務 1 精準修復：不拆散任何格子！改用流暢的橫向溢位自動縮放護盾，手機平板電腦 100% 畫面完美自適應 */
+        /* 改用橫向溢位自動縮放護盾，手機平板電腦 100% 畫面完美自適應且「表格不拆散、欄位不位移」 */
         @media (max-width: 768px) {
             body { padding: 8px; }
             .page { padding: 15px 10px; }
@@ -426,7 +425,6 @@
         <input type="hidden" id="formSubject" name="_subject" value="【專屬報名登記】巴比美語單一課程填報通知">
         <input type="hidden" id="printLinkInput" name="查看並印出完整A4報名表" value="">
 
-        <!-- 由核心大腦動態寫入 -->
         <input type="hidden" id="course_name_hidden" name="course_name" value="">
         <input type="hidden" id="class_time" name="class_time" value="">
         <input type="hidden" id="sub_tuition" name="sub_tuition" value="0">
@@ -436,7 +434,6 @@
         <input type="hidden" id="summer_pm_selected" name="summer_pm_selected" value="">
 
         <div class="page page1">
-            <!-- 🎯 任務 2：第一頁最高處抬頭一行字，自帶動態大腦感應天線 -->
             <div id="dynamicBannerDisplay" class="dynamic-top-banner">載入中...</div>
 
             <div class="header-section">
@@ -517,7 +514,6 @@
                         <th><span class="zh-title">標準上課時段</span><span class="en-title">Schedule</span></th>
                         <td colspan="2" id="timeDisplay" style="font-weight: bold; color: #1b3d6d; font-size: 11px; padding-left: 8px; white-space: nowrap;">載入中...</td>
                     </tr>
-                    <!-- 智慧身分切換艙：完全咬合 C1 官方手抄死數字防線 -->
                     <tr>
                         <th><span class="zh-title">學員身分狀態</span><span class="en-title">Student Status</span></th>
                         <td colspan="5">
@@ -596,7 +592,7 @@
                 </div>
                 <div class="term-item">
                     <strong>2. 請假與補課 / Leave & Make-up Lessons：</strong><br>
-                    因事或病假缺席者，請於上課前兩小時透過官方 LINE 或電話完成請假。完成請假者，本班將提供一對一或小組補課、輔導。無故缺課者（曠課）不予補課與退費。<br>
+                    因事 or 病假缺席者，請於上課前兩小時透過官方 LINE 或電話完成請假。完成請假者，本班將提供一對一或小組補課、輔導。無故缺課者（曠課）不予補課與退費。<br>
                     <span style="color: #555; font-style: italic;">In case of sick leave or personal leave, please notify the school via our official LINE account or phone at least 2 hours before class. For validated absences, the school will arrange one-on-one or small-group make-up tutoring. No make-up lessons or refunds will be provided for unexcused absences (truancy).</span>
                 </div>
                 <div class="term-item">
@@ -688,19 +684,21 @@ function calculateTuition() {
         var adv = advancedDeadValues[statusKey];
         labelDisplay.innerText = adv.label;
         
-        // 🔒 執行官方死數字強制連動指令
         var finalTotal = adv[discountRate.toString()] || adv["1.0"];
         
         document.getElementById('class_time').value = adv.time;
         document.getElementById('sub_tuition').value = adv.t;
         document.getElementById('sub_materials').value = adv.m;
         document.getElementById('sub_misc').value = adv.ms;
-        totalInput.value = finalTotal;
-
+        
+        // 🎯 黃金細節二修復：動態計算大腦實時重組，讓 "$" 符號與硬碼死數字完美扣合！
+        totalInput.value = "$" + finalTotal;
         timeDisplay.innerText = adv.time;
+
+        /* 🚀 任務純淨連動：將原本殘留的「手抄」以及「手抄死數字」廢棄字符全數清除乾淨 */
         calcPreview.innerHTML = "📚 <b>" + TARGET_COURSE + " (" + statusKey + "方案) 費用即時拆解明細</b>：<br>" +
-                                "手抄基本學費總計：$" + adv.t + " | 固定教材費：$" + adv.m + " | 當期學雜費：$" + adv.ms + "<br>" +
-                                "👉 <b>手抄死數字方案核定應繳總金額：NT$ " + finalTotal + " 元</b>";
+                                "基本學費總計：$" + adv.t + " | 固定教材費：$" + adv.m + " | 當期學雜費：$" + adv.ms + "<br>" +
+                                "👉 <b>方案核定應繳總金額：NT$ " + finalTotal + " 元</b>";
     }
 }
 
